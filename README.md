@@ -1,16 +1,16 @@
-# 🎓 Goalpanion  
+# 🎓 ACHIEVIT
 **An LLM-Powered Academic Companion for Goal Achievement**
 
 ---
 
-**Goalpanion** is an intelligent, LLM-powered companion designed to help **students and researchers achieve academic goals**—such as studying for exams, completing assignments, or writing dissertations—under real-world constraints like limited time, skill level, and deadlines.
+**ACHIEVIT** is an intelligent, LLM-powered companion designed to help **students and researchers achieve academic goals**—such as studying for exams, completing assignments, or writing dissertations—under real-world constraints like limited time, skill level, and deadlines.
 
-Unlike generic productivity tools, Goalpanion combines **heuristic planning logic** with **large language model (LLM) reasoning** to deliver **adaptive, context-aware guidance** that evolves as the user makes progress.
+Unlike generic productivity tools, ACHIEVIT combines **heuristic planning logic** with **large language model (LLM) reasoning** to deliver **adaptive, context-aware guidance** that evolves as the user makes progress.
 
 ---
 
 <p align="center">
-  <img src="assets/Achievit.JPG" alt="Achievit Logo" style="width:100%; max-width:800px;" />
+  <img src="assets/Achievit.jpg" alt="Achievit Logo" style="width:100%; max-width:800px;" />
 </p>
 
 ---
