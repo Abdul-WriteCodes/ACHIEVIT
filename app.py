@@ -6,11 +6,11 @@ from utils.validation import validate_goal_input
 from utils import progress_manager
 
 # Page Setup
-st.set_page_config(page_title="GOALPANION", layout="centered")
+st.set_page_config(page_title="ACHIEVIT", layout="centered")
 st.markdown(
     """
     <div style='text-align: center;'>
-        <h1>🎭 GOALPANION</h1>
+        <h1>🎭 ACHIEVIT</h1>
         <p style='font-size: 16px; color: cyan;'>
             Powered by Large Language Model
         </p>
@@ -54,9 +54,9 @@ with st.sidebar.expander("Constraints", expanded=True):
 
 
 # --- Main Panel ---
-st.markdown("### Hi, I’m Goalpanion 👋")
+st.markdown("### Welcome to ACHIEVIT! 👋")
 st.markdown(
-    "I’m your AI-powered goal planning companion for students and researchers. "
+    "Your AI-powered goal planning companion for students and researchers. "
     "To get started, head to the sidebar and enter your goal, describe it and state the constraints."
 )
 
@@ -108,7 +108,7 @@ if submit:
 st.markdown("---")
 st.markdown("""
    <div style="text-align: center; font-size: 0.85em; color: gray; line-height: 1.6em;">
-    <strong>Goalpanion</strong>: Designed and Developed in <strong>2026 Encode Commit To Change Hackathon</strong><br>
+    <strong>ACHIEVIT</strong>: Designed and Developed in <strong>2026 Encode Commit To Change Hackathon</strong><br>
     🔬Learn more about Developer: <a href="https://abdul-writecodes.github.io/portfolio/" target="_blank">Abdul</a><br>
     We appreciate voluntary support for this project via 
     <a href="https://www.buymeacoffee.com/abdul_writecodes" target="_blank" style="color: #ff5f1f; font-weight: bold;">☕BuyMeACoffee</a> 
