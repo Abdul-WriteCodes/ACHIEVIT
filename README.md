@@ -10,7 +10,7 @@ Unlike generic productivity tools, Goalpanion combines **heuristic planning logi
 ---
 
 <p align="center">
-  <img src="assets/Goalpanion.png" alt="Goalpanion Logo" style="width:100%; max-width:800px;" />
+  <img src="assets/Achievit.JPG" alt="Achievit Logo" style="width:100%; max-width:800px;" />
 </p>
 
 ---
