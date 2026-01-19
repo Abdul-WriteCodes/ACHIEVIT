@@ -41,6 +41,9 @@ Your task:
 3. Adjust workload based on limited time and skill level.
 4. Recommend resources only where useful.
 5. Ensure the plan remains realistic for the deadline.
+6. If a milestone is 100% complete, acknowledge it briefly and move on.
+7. If progress is low and the deadline is near, warn the student and suggest prioritization.
+
 
 Return the response structured clearly by milestone.
 Avoid generic advice.
