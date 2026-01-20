@@ -29,7 +29,7 @@ Unlike generic productivity tools, ACHIEVIT is a stateful adaptive system that c
 ### 🧠 Hybrid Intelligence Architecture
 
 <p align="center">
-  <img src="assets/Achievitecture.png" alt="Achievit Logo" style="width:100%; max-width:800px;" />
+  <img src="assets/Achievitecture.png" alt="Achievitecture" style="width:100%; max-width:800px;" />
 </p>
 
 - **Heuristic Logic**
