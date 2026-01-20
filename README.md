@@ -1,11 +1,11 @@
-# 🎓 ACHIEVIT
+# ACHIEVIT
 **An LLM-Powered Academic Companion for Goal Achievement**
 
 ---
 
-**ACHIEVIT** is an intelligent, LLM-powered companion designed to help **students and researchers achieve academic goals**—such as studying for exams, completing assignments, or writing dissertations—under real-world constraints like limited time, skill level, and deadlines.
+**ACHIEVIT** is a Large Language Model-powered adaptive intelligent system designed to help **students and researchers achieve academic goals** to structure, track, adapt and achieve their goals— such as studying for exams, completing assignments, or writing dissertations—under real-world constraints like limited time, skill level, and deadlines.
 
-Unlike generic productivity tools, ACHIEVIT combines **heuristic planning logic** with **large language model (LLM) reasoning** to deliver **adaptive, context-aware guidance** that evolves as the user makes progress.
+Unlike generic productivity tools, ACHIEVIT is a stateful adaptive system that combines **heuristic logic** with **large language model (LLM) reasoning** to deliver **adaptive, context-aware guidance** that evolves as the user makes progress on their goals. Basically, it support students and researchers in setting their super-importnat goals, break them into achievable milestones and ensure that they achieve it
 
 ---
 
@@ -18,7 +18,7 @@ Unlike generic productivity tools, ACHIEVIT combines **heuristic planning logic*
 ## 🚀 Key Features
 
 ### 🎯 Goal-Oriented Planning
-- Supports multiple academic goal types:
+- Achievit supports multiple academic goal types:
   - **Exams**
   - **Assignments**
   - **Dissertations / Theses**
@@ -27,6 +27,11 @@ Unlike generic productivity tools, ACHIEVIT combines **heuristic planning logic*
 ---
 
 ### 🧠 Hybrid Intelligence Architecture
+
+<p align="center">
+  <img src="assets/Achievitecture.png" alt="Achievit Logo" style="width:100%; max-width:800px;" />
+</p>
+
 - **Heuristic Logic**
   - Deterministic milestone generation
   - Constraint handling (time, skill level, deadlines)
@@ -34,7 +39,7 @@ Unlike generic productivity tools, ACHIEVIT combines **heuristic planning logic*
   - Adaptive planning and replanning
   - Optimization strategies
   - Context-aware academic guidance
-
+  
 This hybrid approach ensures plans are **structured, feasible, and intelligent**.
 
 ---
