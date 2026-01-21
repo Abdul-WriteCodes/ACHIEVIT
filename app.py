@@ -59,14 +59,22 @@ for key, value in defaults.items():
 # ------------------------------
 st.set_page_config(page_title="ACHIEVIT", layout="centered")
 
+# ---------------- HEADER ----------------
 st.markdown(
-    "<div style='text-align: center;'>"
-    "<h1>🎭 ACHIEVIT</h1>"
-    "<p style='font-size: 16px; color: cyan;'>Powered by Large Language Models</p>"
-    "</div>",
-    unsafe_allow_html=True,
-)
-
+    """
+    <div style='text-align:center;'>
+        <h1>A C H I E V I T</h1>
+        <p style='font-size:16px; color:gray; font-weight:600'>
+            A hybrid intelligent agent system for students and researchers in achieving their goals/resolutions
+        </p>
+        <p style='font-size:14px; color:#2ECC71; text-align:center; font-weight:600'>
+            🎯 Set Goals • 📝 Create Plans • 🔄 Execute & Adapt • ✅ Complete
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+) 
+st.markdown("---")
 
 # ------------------------------
 # Sidebar Inputs
@@ -106,12 +114,17 @@ with st.sidebar.expander("Constraints", expanded=True):
 # ------------------------------
 # Main Panel
 # ------------------------------
-st.markdown("### Welcome to ACHIEVIT 👋")
-st.markdown(
-    "I’m your AI-powered academic planning companion. "
-    "Enter your goal and constraints in the sidebar to get started."
-)
-
+st.markdown("### Hello 👋!")
+st.markdown("""
+<p style='font-size:14px; color:#2ECC71;'>
+I’m your AI-powered academic planning companion, here to help you finish whatever goal you start<br>
+To get started, follow these steps in the side bar:<br>
+🎯 Select a goal type<br>
+📝 Describe your goal<br>
+⏱️ State your constraints<br>
+👇 Click 'Generate Plan' here
+</p>
+""", unsafe_allow_html=True)
 
 # ------------------------------
 # Generate Plan
