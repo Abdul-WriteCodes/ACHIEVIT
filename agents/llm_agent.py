@@ -16,7 +16,7 @@ def generate_detailed_plan(goal, milestones, constraints, progress=None):
         progress = {m: 0 for m in milestones}
 
     prompt = f"""
-You are an academic planning assistant.
+You are a seasoned academic planning assistant.
 
 The student has ONE academic goal and EXACTLY FOUR high-level milestones.
 Milestones are fixed phases and must NOT be broken into new milestones.
@@ -36,7 +36,7 @@ Current progress per milestone (0–100%):
 {progress}
 
 Your task:
-1. For each milestone, suggest concrete next actions appropriate to its progress level.
+1. For each milestone, give in-depth explanation what it is all about and how important it is to success . Then suggest concrete next actions appropriate to its progress level.
 2. Do NOT repeat completed work; focus on what moves progress forward.
 3. Adjust workload based on limited time and skill level.
 4. Recommend resources only where useful.
@@ -47,6 +47,9 @@ Your task:
 
 Return the response structured clearly by milestone.
 Avoid generic advice.
+
+
+
 """
 
     response = client.models.generate_content(
@@ -55,3 +58,4 @@ Avoid generic advice.
     )
 
     return response.text
+

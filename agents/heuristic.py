@@ -25,10 +25,10 @@ def generate_plan(goal, constraints):
         or "research paper" in goal_lower
     ):
         milestones = [
-            "Define research scope and proposal",
-            "Conduct literature review and methodology planning",
-            "Execute research and write core chapters",
-            "Final review, editing, and submission"
+            "Draft Proposal and Chapter One: Define research scope, and Purpose",
+            "Draft Chapter Two: Conduct literature review and methodology planning",
+            "Draft Chapter Three: Plan Methodology, Execute research and write core chapters",
+            "Draft Chapter Four and Five: Write core chapters, analyse result, review, edit, and submit"
         ]
 
     else:

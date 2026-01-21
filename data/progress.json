@@ -32,5 +32,17 @@
         "Data collection / Experiments": "Not started",
         "Writing chapters": "Not started",
         "Review & submit": "Not started"
+    },
+    "i_am_working_on_agent_observability_using_heuristic_approach_and_llm_as_a_judge": {
+        "Clarify and scope the goal": 0,
+        "Plan and execute core tasks": 0,
+        "Review progress and refine work": 0,
+        "Finalize and complete the goal": 68
+    },
+    "i_am_working_on_my_dissertation__on_agent_observability_using_heuristic_approach_and_llm_as_a_judge": {
+        "Draft Proposal and Chapter One: Define research scope, and Purpose": 0,
+        "Draft Chapter Two: Conduct literature review and methodology planning": 48,
+        "Draft Chapter Three: Plan Methodology, Execute research and write core chapters": 0,
+        "Draft Chapter Four and Five: Write core chapters, analyse result, review, edit, and submit": 86
     }
 }
