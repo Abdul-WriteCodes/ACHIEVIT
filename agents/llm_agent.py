@@ -2,6 +2,7 @@
 
 import streamlit as st
 from google import genai
+from google.genai import errors
 
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=GEMINI_API_KEY)
@@ -86,9 +87,30 @@ RESPONSE FORMAT
 The plan must remain realistic, adaptive, and grounded in the execution data provided.
 """
 
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=prompt
-    )
+    try:
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=prompt,
+        )
 
-    return response.text
+        return response.text
+
+    except errors.ServerError:
+        # Free-tier quota exceeded OR model/server overloaded
+        st.warning(
+            "⚠️ Gemini API free-tier limit may be exceeded or the server is overloaded.\n\n"
+            "Please wait a few minutes and try again."
+        )
+        return (
+            "⚠️ Unable to generate a plan right now due to temporary AI service limits. "
+            "Please try again later."
+        )
+
+    except errors.APIError:
+        st.error(
+            "❌ An unexpected error occurred while contacting the AI service."
+        )
+        return (
+            "❌ An unexpected error occurred while generating your plan. "
+            "Please try again."
+        )
