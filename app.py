@@ -77,7 +77,7 @@ st.markdown(
 st.markdown("---")
 
 # ------------------------------
-# Sidebar Inputs
+# Sidebar Inputs- Control Goal and constraints setting
 # ------------------------------
 st.sidebar.header("Goal Control Panel")
 
@@ -110,6 +110,7 @@ with st.sidebar.expander("Constraints", expanded=True):
         min_value=date.today(),
     )
 
+
 # ------------------------------
 # Main Panel
 # ------------------------------
@@ -117,7 +118,11 @@ st.markdown("### Hello 👋!")
 st.markdown("""
 <p style='font-size:14px; color:#2ECC71;'>
 I’m your AI-powered academic planning companion, here to help you finish whatever goal you start<br>
-To get started, follow the steps in the sidebar
+To get started, follow these steps in the side bar:<br>
+🎯 Select a goal type<br>
+📝 Describe your goal<br>
+⏱️ State your constraints<br>
+👇 Click 'Generate Plan' here
 </p>
 """, unsafe_allow_html=True)
 
@@ -165,47 +170,17 @@ if st.button("🚀 Generate Plan", type="primary"):
         st.session_state.detailed_plan_original = plan_text
         st.session_state.detailed_plan = plan_text
 
-# ------------------------------
-# Two-column layout
-# ------------------------------
-col1, col2 = st.columns([2, 1])  # left wider for milestone checkboxes
 
 # ------------------------------
-# Left Column: Milestones & Subtasks (Checkbox Matrix)
+# Display Original Plan
 # ------------------------------
 if st.session_state.plan_generated:
-    col1.markdown("### ✅ Execute Your Plan")
-    col1.caption("Mark completed subtasks. Progress updates automatically.")
+    st.markdown("---")
+    st.subheader("📘 Your Original Plan")
+    st.write(st.session_state.detailed_plan_original)
 
-    updated_progress = {}
-
-    for milestone, subtasks in st.session_state.progress.items():
-        with col1.expander(f"🎯 {milestone}", expanded=True):
-            updated_progress[milestone] = {}
-            for s_idx, (subtask, completed) in enumerate(subtasks.items()):
-                checkbox_key = f"{milestone}_{s_idx}"  # unique key
-                updated_progress[milestone][subtask] = col1.checkbox(
-                    subtask,
-                    value=completed,
-                    key=checkbox_key
-                )
-
-    if updated_progress != st.session_state.progress:
-        st.session_state.progress = updated_progress
-        progress_manager.save_progress(
-            st.session_state.goal_id,
-            execution_matrix=updated_progress,
-            computed_progress=compute_progress(updated_progress),
-        )
-        col1.success("Progress updated from completed subtasks.")
-
-# ------------------------------
-# Right Column: Plan, Downloads, Progress Overview
-# ------------------------------
-if st.session_state.plan_generated:
-    # Original Plan
-    col2.markdown("### 📘 Your Original Plan")
-    col2.write(st.session_state.detailed_plan_original)
+    st.markdown("---")
+    st.subheader("💾 Download Original Plan")
 
     original_docx = plan_to_docx(
         title="ACHIEVIT – Original Plan",
@@ -214,35 +189,49 @@ if st.session_state.plan_generated:
         plan_text=st.session_state.detailed_plan_original,
     )
 
-    col2.download_button(
+    st.download_button(
         "⬇️ Download Original Plan (DOCX)",
         data=original_docx,
         file_name=f"{st.session_state.goal_id}_original_plan.docx",
         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        type="primary",
     )
 
-    # Adaptive Plan
-    if st.session_state.adapted:
-        col2.markdown("### 🔁 Updated Adaptive Plan")
-        col2.write(st.session_state.detailed_plan)
 
-        adaptive_docx = plan_to_docx(
-            title="ACHIEVIT – Adaptive Plan",
-            goal=st.session_state.goal,
-            constraints=st.session_state.constraints,
-            plan_text=st.session_state.detailed_plan,
+# ------------------------------
+# Execution Layer (CHECKBOX MATRIX)
+# ------------------------------
+if st.session_state.plan_generated:
+    st.markdown("---")
+    st.subheader("✅ Execute Your Plan")
+    st.caption("Mark completed subtasks. Progress updates automatically.")
+
+    updated_progress = {}
+
+    for milestone, subtasks in st.session_state.progress.items():
+        st.markdown(f"### 🎯 {milestone}")
+        updated_progress[milestone] = {}
+
+        for subtask, completed in subtasks.items():
+            updated_progress[milestone][subtask] = st.checkbox(
+                subtask,
+                value=completed,
+                key=f"{milestone}_{subtask}",
+            )
+
+    if updated_progress != st.session_state.progress:
+        st.session_state.progress = updated_progress
+
+       
+        progress_manager.save_progress(
+            st.session_state.goal_id,
+            execution_matrix=updated_progress,
+            computed_progress=compute_progress(updated_progress),
         )
 
-        col2.download_button(
-            "⬇️ Download Adaptive Plan (DOCX)",
-            data=adaptive_docx,
-            file_name=f"{st.session_state.goal_id}_adaptive_plan.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        )
 
-    # Progress Overview
-    col2.markdown("### 📊 Progress Overview")
-    col2.table(compute_progress(st.session_state.progress))
+        st.success("Progress updated from completed subtasks.")
+
 
 # ------------------------------
 # Deadline Risk Check
@@ -262,11 +251,12 @@ if st.session_state.plan_generated:
         )
 
         if total_progress < expected_progress:
-            col2.warning(
+            st.warning(
                 f"⚠️ You are behind schedule! "
                 f"Current: {total_progress:.1f}% | "
                 f"Expected: {expected_progress:.1f}%"
             )
+
 
 # ------------------------------
 # Adapt Plan
@@ -286,6 +276,41 @@ if st.session_state.plan_generated and st.button("🔄 Adapt Plan Based on My Pr
     st.session_state.adapted = True
 
     st.success("Plan adapted successfully.")
+    st.subheader("🔁 Updated Adaptive Plan")
+    st.write(st.session_state.detailed_plan)
+
+
+# ------------------------------
+# Download Adaptive Plan
+# ------------------------------
+if st.session_state.adapted:
+    st.markdown("---")
+    st.subheader("💾 Download Adaptive Plan")
+
+    adaptive_docx = plan_to_docx(
+        title="ACHIEVIT – Adaptive Plan",
+        goal=st.session_state.goal,
+        constraints=st.session_state.constraints,
+        plan_text=st.session_state.detailed_plan,
+    )
+
+    st.download_button(
+        "⬇️ Download Adaptive Plan (DOCX)",
+        data=adaptive_docx,
+        file_name=f"{st.session_state.goal_id}_adaptive_plan.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        type="primary",
+    )
+
+
+# ------------------------------
+# Progress Overview
+# ------------------------------
+if st.session_state.plan_generated:
+    st.markdown("---")
+    st.subheader("📊 Progress Overview")
+    st.table(compute_progress(st.session_state.progress))
+
 
 # ------------------------------
 # Start New Goal
@@ -296,6 +321,7 @@ if st.session_state.plan_generated:
         for key, value in defaults.items():
             st.session_state[key] = value
         st.rerun()
+
 
 # ------------------------------
 # Footer
