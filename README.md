@@ -100,7 +100,7 @@ For each goal, the system:
 - Developers exploring **LLM agent systems, hybrid planning, and observability**
 
 ---
-##🚀 Local Installation & Setup
+## Local Installation & Setup
 
 Follow the steps below to clone and run ACHIEVIT locally on your machine.
 - Clone the Repository
@@ -129,7 +129,7 @@ OPIK is optional but recommended for tracing, evaluation, and observability.
 	- http://localhost:8501
 
 ---
-##🛠 Troubleshooting
+## Troubleshooting
 
 Gemini API free tier limit exceeded or server overloaded
 The free-tier Gemini model has request limits and reduced reasoning capacity. If the limit is exceeded or the server is overloaded, the app will prompt you to try again later or switch to a billed model.
@@ -139,8 +139,6 @@ The free-tier Gemini model has request limits and reduced reasoning capacity. If
 - Secrets not found
 	- Ensure .streamlit/secrets.toml exists and is correctly formatted
 
-
-
 ---
 
 ## Disclaimer
@@ -149,10 +147,5 @@ ACHIEVIT does not collect or store personal data.
 All planning and progress tracking occur within the application session.
 
 ---
-
-## Developer
-
-**Abdul Write & Codes**  
-🔬 Portfolio: https://abdul-writecodes.github.io/portfolio/  
 
 © 2026
