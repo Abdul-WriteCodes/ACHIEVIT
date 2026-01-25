@@ -204,7 +204,7 @@ if st.session_state.plan_generated:
 if st.session_state.plan_generated:
     st.markdown("---")
     st.subheader("✅ Execute Your Plan")
-    st.caption("Mark completed subtasks. Progress updates automatically.")
+    st.caption("To achieve this goal, here are the subtasks you need to compelete. Check the box for every tasks you have completed and your progress will updates automatically.")
 
     updated_progress = {}
 
