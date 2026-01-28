@@ -234,7 +234,7 @@ if st.session_state.plan_generated and not st.session_state.show_execution:
 # ------------------------------
 if st.session_state.plan_generated and st.session_state.show_execution:
     st.markdown("---")
-    st.subheader("✅  Execute Your Plan")
+    st.subheader(f"✅  Start Executing Your Plan: Here the tasks you need to do to achieve your  {goal_type} ")
 
     updated_progress = {}
 
