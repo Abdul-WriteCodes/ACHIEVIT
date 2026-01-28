@@ -119,12 +119,12 @@ st.markdown("### Hello 👋!")
 st.markdown(
     """
     <p style='font-size:14px; color:#2ECC71; line-height:1.5;'>
-    Achievit is an AI-powered intelligent system that will accompany you in finishing whatever goal you start.<br>
-    Use the Sidebar to get started:
+    Achievit is an AI-powered intelligent system that will accompany you in finishing whatever goal you start.<br><br>
+    Use the Sidebar to get started:<br>
     🎯 <strong>Select a goal type</strong><br>
     📝 <strong>Describe your goal</strong><br>
     ⏱️ <strong>State your constraints</strong><br><br>
-    👇 Click <strong>'Generate Roadmap'</em><br>
+    👇 Click <strong>'Generate Roadmap'</strong><br>
     🕹️ Take control from there!
     </p>
     """,
