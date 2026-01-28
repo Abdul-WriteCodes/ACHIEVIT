@@ -10,6 +10,31 @@ from utils.validation import validate_goal_input
 from utils import progress_manager
 from utils.exporters import plan_to_docx
 
+# ------------------------------
+# OPIK Setup for LLM Tracing
+# ------------------------------
+from opik import OPIK, track
+opik = OPIK(api_key=st.secrets["opik_api_key"])  # Store API key in Streamlit secrets
+
+@track(opik_client=opik, task_name="dev_llm_plan_generation")
+def dev_generate_detailed_plan(goal, milestones, constraints, progress, subtasks):
+    """
+    Wrapper for generate_detailed_plan to trace LLM calls with OPIK.
+    Returns plan_text plus metadata for debugging and prompt optimization.
+    """
+    start_time = datetime.now()
+    
+    plan = generate_detailed_plan(goal, milestones, constraints, progress, subtasks)
+    
+    return {
+        "plan_text": plan,
+        "goal": goal,
+        "milestones_count": len(milestones),
+        "subtasks_count": sum(len(v) for v in subtasks.values()),
+        "constraints": constraints,
+        "progress_snapshot": progress,
+        "latency_seconds": (datetime.now() - start_time).total_seconds()
+    }
 
 # ------------------------------
 # Helper Functions
@@ -22,7 +47,6 @@ def compute_progress(progress_matrix):
         computed[milestone] = int((done / total) * 100)
     return computed
 
-
 def summarize_subtasks(progress_matrix):
     summary = {}
     for milestone, subtasks in progress_matrix.items():
@@ -31,7 +55,6 @@ def summarize_subtasks(progress_matrix):
             "pending": [s for s, done in subtasks.items() if not done],
         }
     return summary
-
 
 # ------------------------------
 # Initialize Session State
@@ -54,13 +77,11 @@ for key, value in defaults.items():
     if key not in st.session_state:
         st.session_state[key] = value
 
-
 # ------------------------------
 # Page Setup
 # ------------------------------
 st.set_page_config(page_title="ACHIEVIT", layout="centered")
 
-# ---------------- HEADER ----------------
 st.markdown(
     """
     <div style='text-align:center;'>
@@ -111,7 +132,6 @@ with st.sidebar.expander("Constraints", expanded=True):
         min_value=date.today(),
     )
 
-
 # ------------------------------
 # Main Panel
 # ------------------------------
@@ -130,7 +150,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # ------------------------------
 # Generate Plan
@@ -163,13 +182,15 @@ if st.button("🚀 Get Roadmap", type="primary"):
                 st.error("❌ Internal planning error. Please try again.")
                 st.stop()
 
-            plan_text = generate_detailed_plan(
+            # --- DEV: LLM call wrapped with OPIK ---
+            plan_text_data = dev_generate_detailed_plan(
                 goal=temp_goal,
                 milestones=temp_milestones,
                 constraints=temp_constraints,
                 progress=compute_progress(temp_progress),
-                subtasks=summarize_subtasks(temp_progress),
+                subtasks=summarize_subtasks(temp_progress)
             )
+            plan_text = plan_text_data["plan_text"]
 
         except Exception:
             st.error("❌ AI service unavailable. Please try again.")
@@ -190,7 +211,6 @@ if st.button("🚀 Get Roadmap", type="primary"):
     })
 
     st.success("✅ Analysis completed successfully!")
-
 
 # ------------------------------
 # Display Original Plan
@@ -218,7 +238,6 @@ if st.session_state.plan_generated:
         type="primary",
     )
 
-
 # ------------------------------
 # Reveal Execution Subtasks Button
 # ------------------------------
@@ -230,7 +249,6 @@ if st.session_state.plan_generated and not st.session_state.show_execution:
     if st.button("▶️ Generate Planned Tasks and Activities"):
         st.session_state.show_execution = True
         st.rerun()
-
 
 # ------------------------------
 # Execution Layer
@@ -261,9 +279,8 @@ if st.session_state.plan_generated and st.session_state.show_execution:
         )
         st.success("Progress updated.")
 
-
 # ------------------------------
-# Deadline Risk Check (FIXED)
+# Deadline Risk Check
 # ------------------------------
 if st.session_state.plan_generated and st.session_state.show_execution:
     computed_progress = compute_progress(st.session_state.progress)
@@ -281,20 +298,21 @@ if st.session_state.plan_generated and st.session_state.show_execution:
             f"{total_progress:.1f}% done vs {expected_progress:.1f}% expected"
         )
 
-
 # ------------------------------
 # Adapt Plan
 # ------------------------------
 st.markdown("---")
 if st.session_state.plan_generated and st.button("🔄 Get Advice on My Progress"):
     with st.spinner("🧠Re-evaluating your progress against goal and constraints..."):
-        adapted_plan = generate_detailed_plan(
+        # --- DEV: LLM call wrapped with OPIK ---
+        adapted_plan_data = dev_generate_detailed_plan(
             goal=st.session_state.goal,
             milestones=st.session_state.milestones,
             constraints=st.session_state.constraints,
             progress=compute_progress(st.session_state.progress),
-            subtasks=summarize_subtasks(st.session_state.progress),
+            subtasks=summarize_subtasks(st.session_state.progress)
         )
+        adapted_plan = adapted_plan_data["plan_text"]
 
     st.session_state.detailed_plan = adapted_plan
     st.session_state.adapted = True
@@ -302,7 +320,6 @@ if st.session_state.plan_generated and st.button("🔄 Get Advice on My Progress
     st.success("Evaluation successful.")
     st.subheader("🔁 Here is what your progress means....")
     st.write(st.session_state.detailed_plan)
-
 
 # ------------------------------
 # Progress Overview
@@ -321,8 +338,6 @@ if st.session_state.plan_generated:
         for key, value in defaults.items():
             st.session_state[key] = value
         st.rerun()
-
-
 
 # ------------------------------
 # Footer
