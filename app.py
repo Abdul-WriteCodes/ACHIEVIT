@@ -279,27 +279,23 @@ if st.session_state.plan_generated and st.session_state.show_execution:
         )
 
 
-# ------------------------------
-# Progress Overview (FIXED)
-# ------------------------------
-if st.session_state.plan_generated and st.session_state.show_execution:
-    st.markdown("---")
-    st.subheader("📊 Progress Overview")
-    st.table(compute_progress(st.session_state.progress))
 
-
+# ------------------------------
+# Adapt Plan
+# ------------------------------
 # ------------------------------
 # Adapt Plan
 # ------------------------------
 st.markdown("---")
 if st.session_state.plan_generated and st.button("🔄 Adapt Plan Based on My Progress"):
-    adapted_plan = generate_detailed_plan(
-        goal=st.session_state.goal,
-        milestones=st.session_state.milestones,
-        constraints=st.session_state.constraints,
-        progress=compute_progress(st.session_state.progress),
-        subtasks=summarize_subtasks(st.session_state.progress),
-    )
+    with st.spinner("Thinking through your goal and constraints..."):
+        adapted_plan = generate_detailed_plan(
+            goal=st.session_state.goal,
+            milestones=st.session_state.milestones,
+            constraints=st.session_state.constraints,
+            progress=compute_progress(st.session_state.progress),
+            subtasks=summarize_subtasks(st.session_state.progress),
+        )
 
     st.session_state.detailed_plan = adapted_plan
     st.session_state.adapted = True
@@ -308,6 +304,14 @@ if st.session_state.plan_generated and st.button("🔄 Adapt Plan Based on My Pr
     st.subheader("🔁 Updated Adaptive Plan")
     st.write(st.session_state.detailed_plan)
 
+
+# ------------------------------
+# Progress Overview (FIXED)
+# ------------------------------
+if st.session_state.plan_generated and st.session_state.show_execution:
+    st.markdown("---")
+    st.subheader("📊 Progress Overview")
+    st.table(compute_progress(st.session_state.progress))
 
 # ------------------------------
 # Start New Goal
