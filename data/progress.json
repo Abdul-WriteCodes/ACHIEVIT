@@ -90,13 +90,13 @@
                 "Identify all examinable topics and weightings": true,
                 "Review official syllabus and exam format": true,
                 "Map topics to available study materials": true,
-                "Highlight unfamiliar or high-risk areas": true,
-                "Confirm full understanding of exam scope": true
+                "Highlight unfamiliar or high-risk areas": false,
+                "Confirm full understanding of exam scope": false
             },
             "Study core topics and concepts": {
                 "Study key concepts and theories": true,
                 "Create concise notes or summaries": true,
-                "Work through guided examples": true,
+                "Work through guided examples": false,
                 "Identify weak topics and revise": false,
                 "Validate understanding before proceeding": false
             },
@@ -116,11 +116,11 @@
             }
         },
         "computed": {
-            "Understand exam syllabus and requirements": 100,
-            "Study core topics and concepts": 60,
+            "Understand exam syllabus and requirements": 60,
+            "Study core topics and concepts": 40,
             "Practice past questions and mock exams": 0,
             "Final revision and exam readiness": 0
         },
-        "last_updated": "2026-01-30T15:42:32.454670"
+        "last_updated": "2026-02-02T11:46:19.280299"
     }
 }
