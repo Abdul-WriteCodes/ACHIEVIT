@@ -11,9 +11,8 @@ from utils import progress_manager
 from utils.exporters import plan_to_docx
 
 
-# ------------------------------
+
 # Helper Functions
-# ------------------------------
 def compute_progress(progress_matrix):
     computed = {}
     for milestone, subtasks in progress_matrix.items():
@@ -33,9 +32,8 @@ def summarize_subtasks(progress_matrix):
     return summary
 
 
-# ------------------------------
+
 # Initialize Session State
-# ------------------------------
 defaults = {
     "plan_generated": False,
     "goal": "",
@@ -55,16 +53,16 @@ for key, value in defaults.items():
         st.session_state[key] = value
 
 
-# ------------------------------
+
 # Page Setup
-# ------------------------------
+
 st.set_page_config(page_title="🖥️ACHIEVIT", layout="centered")
 
 # ---------------- HEADER ----------------
 st.markdown(
     """
     <div style='text-align:center;'>
-        <h1>A C H I E V I T 🖥️</h1>
+        <h1>🖥️ A C H I E V I T </h1>
         <p style='font-size:16px; color:gray; font-weight:600'>
             A hybrid intelligent agent system for students and researchers in achieving their goals/resolutions
         </p>
@@ -77,9 +75,8 @@ st.markdown(
 )
 st.markdown("---")
 
-# ------------------------------
+
 # Sidebar Inputs
-# ------------------------------
 st.sidebar.header("Goal Control Panel⚙️")
 
 goal_type = st.sidebar.selectbox(
@@ -88,12 +85,12 @@ goal_type = st.sidebar.selectbox(
 )
 
 goal_input = st.sidebar.text_area(
-    f"Clearly explain your {goal_type} goal, give context and important details📝:",
+    f"Clearly describe your {goal_type} goal, give context and important details📝:",
     height=160,
 )
 
 st.sidebar.markdown("---")
-st.sidebar.caption("Consider these constraints and indicate how they fit into your plan⛔")
+st.sidebar.caption("Consider these constraints and indicate how they fit into your goal⛔")
 
 with st.sidebar.expander("Constraints", expanded=True):
     hours_per_day = st.number_input(
@@ -112,9 +109,9 @@ with st.sidebar.expander("Constraints", expanded=True):
     )
 
 
-# ------------------------------
+
 # Main Panel
-# ------------------------------
+
 st.markdown("### Hello 👋!")
 st.markdown(
     """
