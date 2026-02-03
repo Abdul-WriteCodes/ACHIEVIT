@@ -1,5 +1,8 @@
-# agents/llm_agent.py
+_= """
+Achievit core reasoning is powered by Gemini-3-Flash from Google.
+Gemini-3-Flash is optimised for speed, efficiency and lower cost
 
+"""
 import streamlit as st
 from google import genai
 from google.genai import errors

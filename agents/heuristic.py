@@ -1,4 +1,3 @@
-# agents/heuristic.py
 
 """
 Heuristic planning layer for ACHIEVIT.
@@ -9,9 +8,8 @@ Responsibilities:
 - Generate milestone-aware subtasks
 """
 
-# ------------------------------
+
 # Goal Type Detection
-# ------------------------------
 def detect_goal_type(goal: str) -> str:
     goal = goal.lower()
 
@@ -25,9 +23,7 @@ def detect_goal_type(goal: str) -> str:
     return "generic"
 
 
-# ------------------------------
 # Milestone Generator
-# ------------------------------
 def generate_plan(goal: str, constraints: dict) -> list[str]:
     goal_type = detect_goal_type(goal)
 
@@ -63,9 +59,8 @@ def generate_plan(goal: str, constraints: dict) -> list[str]:
     ]
 
 
-# ------------------------------
-# Milestone-Aware Subtask Generator (FIXED)
-# ------------------------------
+
+# Milestone-Aware Subtask Generator
 def generate_subtasks(milestone: str, goal_type: str) -> list[str]:
     m = milestone.lower()
 
@@ -190,9 +185,7 @@ def generate_subtasks(milestone: str, goal_type: str) -> list[str]:
     ]
 
 
-# ------------------------------
 # Progress Initializer
-# ------------------------------
 def initialize_progress(milestones: list[str], goal: str) -> dict:
     goal_type = detect_goal_type(goal)
 

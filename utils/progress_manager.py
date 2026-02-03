@@ -1,4 +1,4 @@
-# utils/progress_manager.py
+
 
 import json
 import os
@@ -20,9 +20,8 @@ def _save_all(data):
         json.dump(data, f, indent=4)
 
 
-# ------------------------------
+
 # Public API
-# ------------------------------
 def load_progress(goal_id):
     """
     Load progress for a specific goal.
@@ -59,9 +58,9 @@ def save_progress(goal_id, execution_matrix, computed_progress):
     _save_all(data)
 
 
-# ------------------------------
+
 # Backward Compatibility
-# ------------------------------
+
 def load_computed_progress(goal_id):
     """
     Convenience method for legacy code paths.
