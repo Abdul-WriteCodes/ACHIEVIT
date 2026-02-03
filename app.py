@@ -122,7 +122,7 @@ st.markdown(
     📝 <strong>Describe your goal</strong><br>
     ⏱️ <strong>State your constraints</strong><br>
     👇 Click <strong>'Get Roadmap'</strong><br>
-    🕹️ Take control from there!
+    🕹️ <strong>Take control from there!<strong>
     </p>
     """,
     unsafe_allow_html=True
@@ -230,8 +230,8 @@ Users have to mark any of the subtasks to have competed.
 """
 if st.session_state.plan_generated and not st.session_state.show_execution:
     st.markdown("---")
-    st.subheader("🧠 Ready to Execute and Achieve your Goals?")
-    st.caption("Reveal actionable subtasks and begin execution.")
+    #st.subheader("🧠 Ready to Execute and Achieve your Goals?")
+    #st.caption("Reveal actionable subtasks and begin execution.")
 
     if st.button("▶️ Generate Planned Tasks and Activities"):
         st.session_state.show_execution = True
@@ -246,7 +246,7 @@ Execution is in no particular order but progress is saved for the LLM agent (Gem
 """
 if st.session_state.plan_generated and st.session_state.show_execution:
     st.markdown("---")
-    st.subheader(f"✅  Start Executing Your Plan: Here the tasks you need to do to achieve your  {goal_type} Target")
+    st.subheader(f"✅  Execution Started: Here are the tasks you need to do to achieve your  {goal_type} Target")
 
     updated_progress = {}
 
