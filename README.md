@@ -104,6 +104,30 @@ For each goal, the system:
 - Self-directed learners with academic goals  
 
 ---
+## OPIK Observability and evaluation
+
+## Observability
+- Total number of Trace logged: 
+- Total Errors:
+	- 52 due to API free tier exhaustion
+	- 23 due to system logic issues
+	- $0.351 as total token cost
+	- p50 duration: 16.2s
+
+## Evaluation Result: LLM-as-a-Judge
+- Evaluated Model: Google Gemini-3-Flash
+- Judge: OpenAI GPT-4
+- Metrics: AnswerRelevance, Hallucination, Moderation
+- Size of Dataset: 15
+- Basis of Evaluation: Prompt version 1 vs Prompt version 2
+
+
+
+
+
+
+
+---
 ## Local Installation & Setup
 
 Follow the steps below to clone and run ACHIEVIT locally on your machine.
