@@ -123,7 +123,7 @@ For each goal, the system:
 	- Prompt version 1 vs Prompt version 2
 	- Gemini-3-flash-preview vs Gemini-3-pro-preview
 
-- Results 
+- Results: Prompt Optimisation
 
 | Prompt       | Answer Relevance ↑ | Hallucination ↓ | Moderation | Latency ↓ | Total Tokens | Total Cost |
 |-------------|-----------------|----------------|-----------|-----------|--------------|------------|
@@ -134,7 +134,13 @@ For each goal, the system:
 
 Using OPIK, Prompt-level experiments show that Prompt v2 reduces latency by 37% and cost by 12.5%, while maintaining similar answer relevance and hallucination risk to Prompt v1, enabling an informed efficiency–quality trade-off for real-world deployment
 
+- Results: Model Optimisation
 
+| Model           | Answer Relevance ↑ | Hallucination ↓ | Moderation | Latency ↓ | Total Tokens | Total Cost |
+|-----------------|-----------------|----------------|-----------|-----------|--------------|------------|
+| Gemini-3-flash  | 0.912           | 0.119          | 0.00      | 50.2s     | 9820.133     | $0.008     |
+| Gemini-3-pro    | 0.753           | 0.273          | 0.00      | 60.3s     | 9914.867     | $0.033     |
+| Change (+/-)    | −17.43%         | +129.41%       | 0.00%     | +20.12%   | +0.96%       | +312.50%   |
 
 
 
