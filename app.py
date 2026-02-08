@@ -189,7 +189,7 @@ if st.button("🚀 Get Roadmap", type="primary"):
         "show_execution": False,
     })
 
-    st.success(f"✅ Analysis of your {goal_type} and constaint completed")
+    st.success(f"✅ Analysis of your {goal_type} goal and constaint completed")
 
 
 # Display  Road Map Plan
@@ -199,7 +199,7 @@ LLM agent presents clean and downloadable structured roadmap plan that users hav
 
 if st.session_state.plan_generated:
     st.markdown("---")
-    st.subheader(f"📄 Here is the Road Map towards  Achieving your {goal_type} goal targets ")
+    st.subheader(f"📄 Here is the Road Map towards  Achieving your {goal_type} goal target")
     st.write(st.session_state.detailed_plan_original)
 
     st.markdown("---")
@@ -328,6 +328,7 @@ User progress is computed, displayed and updated for every subtask marked as com
 if st.session_state.plan_generated and st.session_state.show_execution:
     st.markdown("---")
     st.subheader("📊 Milestone Progress Overview")
+    st.caption(f"👀Track how far you are close to achieving your {goal_type} goal.")
     st.table(compute_progress(st.session_state.progress))
 
 # ------------------------------
