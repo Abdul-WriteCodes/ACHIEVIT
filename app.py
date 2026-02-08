@@ -230,7 +230,7 @@ Users have to mark any of the subtasks to have competed.
 """
 if st.session_state.plan_generated and not st.session_state.show_execution:
     st.markdown("---")
-    st.subheader("🧠 Ready to Execute Plan and Achieve your Goals?")
+    st.subheader(f"🧠 Ready to Execute Plan and Achieve your {goal_type} ?")
     st.caption("Click to Reveal actionable subtasks and begin execution.")
 
     if st.button("▶️ Generate Planned Tasks and Activities"):
@@ -301,7 +301,7 @@ is achieved within the stated deadline"
 
 """
 st.markdown("---")
-if st.session_state.plan_generated and st.button("🔄 Get Advice on My Progress"):
+if st.session_state.plan_generated and st.button("🔄 Adapt Plan and Get Advice on My Progress"):
     with st.spinner("🧠Re-evaluating your progress against your planned goal and constraints..."):
         adapted_plan = generate_detailed_plan(
             goal=st.session_state.goal,
@@ -314,7 +314,7 @@ if st.session_state.plan_generated and st.button("🔄 Get Advice on My Progress
     st.session_state.detailed_plan = adapted_plan
     st.session_state.adapted = True
 
-    st.success("Evaluation successful.")
+    st.success("✅ Evaluation successful.")
     st.subheader("🔁 Here is what your progress means....")
     st.write(st.session_state.detailed_plan)
 
@@ -327,7 +327,7 @@ User progress is computed, displayed and updated for every subtask marked as com
 """
 if st.session_state.plan_generated and st.session_state.show_execution:
     st.markdown("---")
-    st.subheader("📊 Progress Overview")
+    st.subheader("📊 Milestone Progress Overview")
     st.table(compute_progress(st.session_state.progress))
 
 # ------------------------------
