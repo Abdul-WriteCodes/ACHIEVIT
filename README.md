@@ -85,7 +85,7 @@ For each goal, the system:
 
 - Built with **Streamlit** for fast, interactive iteration
 - Users remain in full control of:
-  - Goal definition
+  - Goal selection, description, and definition of constraints
   - Subtask execution per milestone (checkboxes)
   - Roadmap plan downloads of plans as docx
   - Execution of plan adaptation based on progress
@@ -96,10 +96,13 @@ For each goal, the system:
 👉 **[Try the Live Demo Here](https://achievit.streamlit.app/)**
 
 ---
-## OPIK Observability and evaluation
+## System Performance and Quality: OPIK Observability and evaluation
 
-## Observability
-- Total number of Trace logged: 4
+Achievit is designed and developed as a production-grade system powered by **Gemini-3-flash-preview** model. Comet Opik cloud was use for behavioural observability and quality evaluations of LLM output
+
+## Observability Result
+LLM API calls, token cost and system latency were observed and logged 
+- Total number of Trace logged: 432
 - Total Errors: 72 errors due to
 	- API free tier exhaustion
 	- Server overload
@@ -115,7 +118,7 @@ For each goal, the system:
 	- Prompt version 1 vs Prompt version 2
 	- Gemini-3-flash-preview vs Gemini-3-pro-preview
 
-- Results: Prompt Optimisation Average scores based on 15 iterations
+- Results: Prompt Optimisation Average scores based on 15 iterations with a custom evaluation dataset
 
 | Prompt       | Answer Relevance ↑ | Hallucination ↓ | Moderation | Latency ↓ | Total Tokens | Total Cost |
 |-------------|-----------------|----------------|-----------|-----------|--------------|------------|
@@ -124,9 +127,11 @@ For each goal, the system:
 | Change (+/-)| +0.11%          | +1.06%         | 0.00%     | −37.38%   | −5.50%       | −12.50%    |
 
 
-Using OPIK, Prompt-level experiments show that Prompt v2.0 as compared to prompt v1.0 increase answer relevance by +0.11%, reduces latency by -37% and cost by -12.5%. But prompt version v2.0 had more hallucination risk +1.06% than Prompt v1, enabling an informed efficiency–quality trade-off for real-world deployment
+- Using OPIK, prompt-level experiments show that Prompt v2.0 as compared to prompt v1.0 increase answer relevance by +0.11%, reduces latency by -37% and cost by -12.5%.
+- But prompt version v2.0 had more hallucination risk of +1.06% than Prompt v1.0
+- An informed efficiency–quality trade-off decision was made to use prompt V1.0 for real-world deployment of a system with less hallucination risk
 
-- Results: Model Optimisation Average scores based on 15 iterations
+- Results: Model Optimisation Average scores based on 15 iterations with a custom evaluation dataset
 
 | Model           | Answer Relevance ↑ | Hallucination ↓ | Moderation | Latency ↓ | Total Tokens | Total Cost |
 |-----------------|-----------------|----------------|-----------|-----------|--------------|------------|
@@ -134,8 +139,11 @@ Using OPIK, Prompt-level experiments show that Prompt v2.0 as compared to prompt
 | Gemini-3-pro    | 0.753           | 0.273          | 0.00      | 60.3s     | 9914.867     | $0.033     |
 | Change (+/-)    | −17.43%         | +129.41%       | 0.00%     | +20.12%   | +0.96%       | +312.50%   |
 
+- Model optimisation result shows that Gemini-3-pro answer relevance is off by -17.43% with respect to Gemini-3-flash
+- Gemini-3-pro hallucinated more by +129.41%, had more latency and cost more to run by +312.5% with respect to Gemin-3-flash
+- Opik results guided and enabled the selection of Gemini-3-flash with prompt v1.0 as the best prompt-model combination for realword deployment of Achievit at minimum cost. less hallucination risk and reduced latency
 
-> **Note:** For code related to observability and LLM-based evaluations using OPIK, check the unmerged branch [`dev_opik_LLM`](https://github.com/Abdul-WriteCodes/ACHIEVIT/tree/dev_opik_llm).
+> **Note:** For code related to observability and LLM-based evaluations using OPIK, check the branch [`dev_opik_LLM`](https://github.com/Abdul-WriteCodes/ACHIEVIT/tree/dev_opik_llm).
 
 ---
 ## Local Installation & Setup
