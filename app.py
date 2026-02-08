@@ -246,7 +246,7 @@ Execution is in no particular order but progress is saved for the LLM agent (Gem
 """
 if st.session_state.plan_generated and st.session_state.show_execution:
     st.markdown("---")
-    st.subheader(f"👤  Start Execution: Here are the tasks you need to do to achieve your  {goal_type} Target")
+    st.subheader(f"🧑  Start Execution: Here are the tasks you need to do to achieve your  {goal_type} Target")
 
     updated_progress = {}
 
