@@ -64,7 +64,7 @@ st.markdown(
     <div style='text-align:center;'>
         <h1>🖥️ A C H I E V I T </h1>
         <p style='font-size:16px; color:gray; font-weight:600'>
-            A hybrid intelligent agent system for students and researchers in achieving their goals/resolutions
+            A Hybrid Large Language Model-powered Intelligent System for Students and Researchers in Achieving their Goals
         </p>
         <p style='font-size:14px; color:#2ECC71; text-align:center; font-weight:600'>
             🎯 Set Goals • 📝 Create Plans • 🔄 Execute & Adapt • ✅ Complete
