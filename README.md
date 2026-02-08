@@ -106,7 +106,7 @@ LLM API calls, token cost and system latency were observed and logged
 - Total Errors: 72 errors due to
 	- API free tier exhaustion
 	- Server overload
-- Total Cost of all 432 logged traces: $2.569 or $0.0059 per LLM call
+- Total Cost of all 432 logged traced LLM calls: $2.569
 - P50 Average Latency: 35.9s
 
 ## Evaluation Result: LLM-as-a-Judge
